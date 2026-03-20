@@ -1,0 +1,26 @@
+[
+  {
+    "firstname": "Aadish",
+    "lastname": "Sharma",
+    "email": "aadi@test.com",
+    "gender": "Male",
+    "phone": "9876543210",
+    "address": "MG Road, Delhi",
+    "state": "NCR",
+    "city": "Delhi",
+    "hobby": "Sports",
+    "picture": "student1.jpg"
+  },
+  {
+    "firstname": "Priya",
+    "lastname": "Saxena",
+    "email": "priya@test.com",
+    "gender": "Female",
+    "phone": "9123456780",
+    "address": "Sector 18, Noida",
+    "state": "NCR",
+    "city": "Noida",
+    "hobby": "Reading",
+    "picture": "student2.jpg"
+  }
+]
