@@ -11,7 +11,7 @@ export class ProductPage {
     colour = '//input[@class="pointer-events-auto"]';
     sizeOption = "button:has-text('L')";  
     addToCartBtn = "button:has-text('Add to cart')";
-    cartIcon = "a[href='/cart']";
+    cartIcon = '(//a[@class="header__cart relative flex justify-end items-center text-0 text-inherit cursor-pointer no-underline"])[1]';
 
     async gotoProductListing() {
         await this.page.goto("https://www.mydailychic.com/collections/sale-tops");
@@ -38,28 +38,30 @@ export class ProductPage {
 
     async addToCart() {
         await this.page.locator(this.addToCartBtn).click();
-
         await this.page.locator("h4.cart-drawer-title").waitFor({ state: "visible" });
-
         await this.handleCartPopup();
     }
 
     async handleCartPopup() {
         const closeBtn = this.page
-            .locator("h4.cart-drawer-title")
-            .locator("xpath=..")
-            .locator("button")
-            .first();
+        .locator("h4.cart-drawer-title")
+        .locator("xpath=..")
+        .locator("button")
+        .first();
 
-        if (await closeBtn.isVisible().catch(() => false)) {
-            await closeBtn.click();
-        } else {
-            await this.page.keyboard.press("Escape");
+    if (await closeBtn.isVisible().catch(() => false)) {
+        await closeBtn.click({ force: true });
+
+        await this.page.waitForTimeout(800);
+    } else {
+        await this.page.keyboard.press("Escape");
+        await this.page.waitForTimeout(800);
         }
     }
 
-    // async goToCart() {
-    //     await this.page.waitForTimeout(500); // stability
-    //     await this.page.locator(this.cartIcon).click();
-    // }
+    async goToCart() {
+    await this.page.waitForTimeout(500);
+    await this.page.locator("#header-icons a[href='/cart']").first().click();
+    }
+
 }

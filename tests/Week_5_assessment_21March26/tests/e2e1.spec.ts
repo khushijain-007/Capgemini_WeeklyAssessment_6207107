@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
-import { LoginPage } from "../PageObjectModel/login.page";
-import testData from "../utilities/login.json";
+import { LoginPage } from "../../../PageObjectModel/login.page";
+import testData from "../../../Utilities/login.json";
 
 test("Login - MyDailyChic", async ({ page }) => {
 

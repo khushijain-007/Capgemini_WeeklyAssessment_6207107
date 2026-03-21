@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { ProductPage } from "../PageObjectModel/product.page";
+import { ProductPage } from "../../../PageObjectModel/product.page.ts";
 
 test("Add product to cart - MyDailyChic", async ({ page }) => {
 
@@ -15,7 +15,7 @@ test("Add product to cart - MyDailyChic", async ({ page }) => {
 
     await productPage.addToCart();
 
-    await productPage.goToCart();
+    await page.locator('//a[@class="header__cart relative flex justify-end items-center text-0 text-inherit cursor-pointer no-underline"]').first().click();
 
     await expect(page).toHaveURL(/.*cart/);
 });
